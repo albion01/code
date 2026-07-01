@@ -143,10 +143,11 @@ pre code {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  background: linear-gradient(180deg, #3f5fd8, #3450c4);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0 2px 14px rgba(28, 40, 100, 0.22);
 }
 
 .nav {
@@ -162,7 +163,7 @@ pre code {
   gap: 10px;
   font-family: var(--display);
   font-weight: 600;
-  color: var(--text);
+  color: #ffffff;
   font-size: 1.15rem;
 }
 
@@ -193,13 +194,13 @@ pre code {
 }
 
 .nav-links a {
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 0.98rem;
   font-weight: 500;
 }
 
 .nav-links a:hover {
-  color: var(--text);
+  color: #ffffff;
   text-decoration: none;
 }
 

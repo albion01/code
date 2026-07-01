@@ -1,0 +1,186 @@
+<!-- title: Legislative Timeline | CMMC / NIST 800-171 | Albion -->
+<!-- description: How FISMA, the CUI program, and DoD contract rules converged into CMMC 2.0 and 32 CFR Part 170. -->
+<style>
+  .cmmc-tl{--s1:#2f6fb0;--s2:#1f9e82;--s3:#c07d1e;--gold:#b8860b;max-width:760px;margin:0 auto;}
+  .cmmc-tl .tl-header{text-align:center;margin-bottom:2rem;}
+  .cmmc-tl .tl-header h1{margin:0 0 .5rem;}
+  .cmmc-tl .tl-header p{color:var(--muted);margin:.2rem 0;font-size:1rem;}
+  .cmmc-tl .chain{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem 1.2rem;font-size:.92rem;color:var(--muted);text-align:center;margin-bottom:2.2rem;box-shadow:var(--shadow);}
+  .cmmc-tl .chain b{color:var(--text);}
+  .cmmc-tl .legend{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2rem;}
+  .cmmc-tl .legend span{display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;color:var(--muted);}
+  .cmmc-tl .dot{width:12px;height:12px;border-radius:50%;display:inline-block;}
+  .cmmc-tl .d1{background:var(--s1);}.cmmc-tl .d2{background:var(--s2);}.cmmc-tl .d3{background:var(--s3);}
+  .cmmc-tl .stream-title{font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin:2rem 0 1rem;padding-bottom:.4rem;border-bottom:1px solid var(--border);}
+  .cmmc-tl .node{position:relative;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--border);border-radius:var(--radius-sm);padding:.9rem 1.1rem;margin:0 auto;max-width:640px;box-shadow:var(--shadow);}
+  .cmmc-tl .node .yr{font-size:.75rem;font-weight:700;letter-spacing:.5px;color:var(--muted);text-transform:uppercase;}
+  .cmmc-tl .node h3{margin:.15rem 0 .35rem;font-size:1.05rem;font-family:var(--font);color:var(--text);}
+  .cmmc-tl .node p{margin:0;font-size:.9rem;color:var(--muted);}
+  .cmmc-tl .n1{border-left-color:var(--s1);}
+  .cmmc-tl .n2{border-left-color:var(--s2);}
+  .cmmc-tl .n3{border-left-color:var(--s3);}
+  .cmmc-tl .arrow{width:2px;height:26px;background:var(--border);margin:0 auto;position:relative;}
+  .cmmc-tl .arrow::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--border);}
+  .cmmc-tl .tag{display:inline-block;margin-top:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.5px;background:color-mix(in srgb,var(--gold) 16%,transparent);color:var(--gold);border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:20px;padding:.15rem .6rem;}
+  .cmmc-tl .converge{text-align:center;margin:2.2rem 0 1rem;font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);}
+  .cmmc-tl .node.final{border:1px solid var(--gold);border-left:4px solid var(--gold);box-shadow:0 0 24px color-mix(in srgb,var(--gold) 20%,transparent);}
+  .cmmc-tl .callout{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.1rem 1.3rem;margin-top:2.2rem;box-shadow:var(--shadow);}
+  .cmmc-tl .callout h4{margin:0 0 .6rem;font-size:.95rem;color:var(--gold);}
+  .cmmc-tl .callout ul{margin:0;padding-left:1.1rem;}
+  .cmmc-tl .callout li{font-size:.88rem;color:var(--muted);margin:.4rem 0;}
+  .cmmc-tl .callout li b{color:var(--text);}
+  .cmmc-tl .tl-footer{text-align:center;color:var(--muted);font-size:.75rem;margin-top:2rem;}
+</style>
+<section class="section">
+  <p class="post-back"><a href="/work-cmmc.html">&larr; CMMC / NIST 800-171</a></p>
+
+  <div class="cmmc-tl">
+    <div class="tl-header">
+      <h1>The Road to CMMC 2.0 &amp; 32 CFR Part 170</h1>
+      <p>How U.S. federal law, the CUI program, and DoD contract rules converge</p>
+      <p>into the Cybersecurity Maturity Model Certification</p>
+    </div>
+
+    <div class="chain">
+      <b>The chain in one line:</b><br>
+      FISMA &rarr; NIST SP 800-53 &rarr; NIST SP 800-171 (Rev 2) &rarr; DFARS 7012 &rarr;
+      CMMC 1.0 &rarr; CMMC 2.0 &rarr; <b>32 CFR Part 170</b> (effective 11/10/2025) &rarr;
+      48 CFR/DFARS puts it in contracts
+    </div>
+
+    <div class="legend">
+      <span><i class="dot d1"></i>Statutory &amp; standards foundation</span>
+      <span><i class="dot d2"></i>The CUI program</span>
+      <span><i class="dot d3"></i>DoD contractual mechanism</span>
+    </div>
+
+    <!-- STREAM 1 -->
+    <div class="stream-title">Stream 1 &nbsp;&middot;&nbsp; Statutory &amp; Standards Foundation</div>
+
+    <div class="node n1">
+      <div class="yr">2002</div>
+      <h3>FISMA</h3>
+      <p>Federal Information Security Management Act. Requires agencies to protect
+         federal information and directs NIST to write the standards.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node n1">
+      <div class="yr">2003 onward</div>
+      <h3>FIPS 199 / FIPS 200 + NIST SP 800-53</h3>
+      <p>Security categorization plus the master controls catalog. Everything
+         downstream draws its controls from 800-53.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node n1">
+      <div class="yr">2015 (Rev 1, Dec 2016)</div>
+      <h3>NIST SP 800-171</h3>
+      <p>"Protecting CUI in Nonfederal Systems." Distills 800-53 into 110 controls
+         written for contractors.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node n1">
+      <div class="yr">February 2020</div>
+      <h3>NIST SP 800-171 Revision 2</h3>
+      <p>110 controls across 14 families. This is the technical baseline for
+         CMMC Level 2. Not Rev 3.</p>
+      <span class="tag">CMMC Level 2 = this baseline</span>
+    </div>
+
+    <!-- STREAM 2 -->
+    <div class="stream-title">Stream 2 &nbsp;&middot;&nbsp; The CUI Program (what we protect)</div>
+
+    <div class="node n2">
+      <div class="yr">November 2010</div>
+      <h3>Executive Order 13556</h3>
+      <p>Creates the government-wide Controlled Unclassified Information program
+         and names NARA as Executive Agent.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node n2">
+      <div class="yr">September 2016</div>
+      <h3>32 CFR Part 2002: the CUI Rule</h3>
+      <p>Defines CUI categories, marking, and handling, and points to 800-171 as
+         the safeguarding standard for nonfederal systems.
+         (Different part of the CFR from Part 170.)</p>
+    </div>
+
+    <!-- STREAM 3 -->
+    <div class="stream-title">Stream 3 &nbsp;&middot;&nbsp; DoD Contractual Mechanism (the teeth)</div>
+
+    <div class="node n3">
+      <div class="yr">2016</div>
+      <h3>DFARS 252.204-7012</h3>
+      <p>Safeguarding Covered Defense Information. Contract clause requiring 800-171
+         plus 72-hour incident reporting.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node n3">
+      <div class="yr">January 2020</div>
+      <h3>CMMC 1.0</h3>
+      <p>Original five-level model with third-party audits. Criticized as too costly
+         and complex.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node n3">
+      <div class="yr">November 2020</div>
+      <h3>DFARS Interim Rule: 7019 / 7020 / 7021</h3>
+      <p>Adds the assessment requirement, the DoD Assessment Methodology, and the
+         CMMC clause. Introduces SPRS self-assessment scoring.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node n3">
+      <div class="yr">November 2021</div>
+      <h3>CMMC 2.0 Announced</h3>
+      <p>Restructures five levels into three: Level 1 (FCI, self-assess),
+         Level 2 (CUI = 800-171 Rev 2), Level 3 (DIBCAC-led, adds 800-172).</p>
+    </div>
+
+    <!-- CONVERGENCE -->
+    <div class="converge">&darr; &nbsp; The three streams converge &nbsp; &darr;</div>
+
+    <div class="node">
+      <div class="yr">December 26, 2023</div>
+      <h3>Proposed Rule: 32 CFR Part 170</h3>
+      <p>The CMMC Program rule enters public rulemaking.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node">
+      <div class="yr">October 15, 2024</div>
+      <h3>Final Rule: 32 CFR Part 170</h3>
+      <p>The CMMC Program itself: levels, C3PAOs, assessment process, POA&amp;M
+         rules, and affirmations.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node final">
+      <div class="yr">November 10, 2025</div>
+      <h3>32 CFR Part 170 Effective</h3>
+      <p>The CMMC program is live.</p>
+      <span class="tag">Program in force</span>
+    </div>
+    <div class="arrow"></div>
+    <div class="node n3">
+      <div class="yr">Phased rollout</div>
+      <h3>48 CFR / DFARS Rule</h3>
+      <p>Revises DFARS 252.204-7021 to put CMMC requirements into actual contracts,
+         phased over roughly three years.</p>
+    </div>
+
+    <!-- CALLOUT -->
+    <div class="callout">
+      <h4>Three distinctions people get wrong</h4>
+      <ul>
+        <li><b>32 CFR Part 170</b> is the CMMC <b>program</b> rule (how assessments
+            work). <b>48 CFR / DFARS</b> is the <b>contractual</b> rule (how it lands
+            in your contract). Both are needed for CMMC to bite.</li>
+        <li><b>32 CFR Part 2002</b> (the CUI rule) is a different animal from
+            <b>32 CFR Part 170</b> (the CMMC rule): same CFR title, different parts.</li>
+        <li>CMMC Level 2 is frozen at <b>800-171 Rev 2</b>, even though NIST
+            published Rev 3 in 2024.</li>
+      </ul>
+    </div>
+
+    <div class="tl-footer">
+      For informational purposes. CMMC Level 2 = NIST SP 800-171 Rev 2 (110 controls, 14 families).
+    </div>
+  </div>
+</section>

@@ -3,15 +3,14 @@
 <style>
   /* Neutralize the global ambient glow on this page so the portrait shows through */
   body::before{display:none !important;}
-  .rp-bg{position:fixed;inset:0;z-index:-3;background:#241a12 url("/images/Joseph%20Erenz.jpg") center 15%/cover no-repeat;filter:sepia(.35) contrast(1.02) brightness(.92);}
-  .rp-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 44%,transparent) 0%,color-mix(in srgb,var(--bg) 76%,transparent) 52%,color-mix(in srgb,var(--bg) 90%,transparent) 100%);}
-  .rp-hero{position:absolute;top:0;left:0;right:0;height:56vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;padding-bottom:2.5vh;text-align:center;pointer-events:none;}
-  .rp-hero-name{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,5vw,3.1rem);color:var(--text);text-shadow:0 2px 22px color-mix(in srgb,var(--bg) 60%,transparent);}
-  .rp-hero-sub{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+  .rp-bg{position:fixed;inset:0;z-index:-3;background:#171009 url("/images/Joseph%20Erenz.jpg") center 0/cover no-repeat;filter:contrast(1.04) saturate(1.05);}
+  .rp-hero{position:absolute;top:0;left:0;right:0;height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;padding-bottom:3vh;text-align:center;pointer-events:none;}
+  .rp-hero-name{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,5vw,3.1rem);color:#f7f3ea;text-shadow:0 2px 16px rgba(0,0,0,.65),0 0 5px rgba(0,0,0,.5);}
+  .rp-hero-sub{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#e8dfd1;text-shadow:0 1px 8px rgba(0,0,0,.7);}
   .rp-floats{position:fixed;inset:0;z-index:-2;pointer-events:none;}
-  .rp-float{position:fixed;top:0;display:block;margin:0;width:clamp(148px,21vw,290px);background:#fbf7ef;padding:7px 7px 12px;border-radius:4px;box-shadow:0 22px 55px rgba(0,0,0,.5);opacity:0;transform:translate3d(0,-9999px,0);will-change:transform,opacity;}
-  .rp-float img{display:block;width:100%;height:auto;border-radius:2px;filter:sepia(.15) contrast(1.02);}
-  .rp-content{position:relative;z-index:1;margin-top:56vh;background:color-mix(in srgb,var(--bg) 91%,transparent);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);border:1px solid var(--border);border-radius:var(--radius);padding:30px clamp(18px,4vw,44px);box-shadow:var(--shadow-lift);}
+  .rp-float{position:fixed;top:0;display:block;margin:0;width:clamp(148px,21vw,290px);background:#fbf7ef;padding:7px 7px 12px;border-radius:4px;box-shadow:0 22px 55px rgba(0,0,0,.55);opacity:0;transform:translate3d(0,-9999px,0);will-change:transform,opacity;}
+  .rp-float img{display:block;width:100%;height:auto;border-radius:2px;}
+  .rp-content{position:relative;z-index:1;margin-top:62vh;background:color-mix(in srgb,var(--bg) 66%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid color-mix(in srgb,var(--border) 70%,transparent);border-radius:var(--radius);padding:30px clamp(18px,4vw,44px);box-shadow:var(--shadow-lift);}
 </style>
 <div class="rp-bg" aria-hidden="true"></div>
 <div class="rp-hero" aria-hidden="true">
@@ -228,8 +227,9 @@ collections and Wisconsin Historical Society: <a href="https://www.wisconsinhist
 </section>
 <script>
   (function () {
+    var bg = document.querySelector(".rp-bg");
     var floats = Array.prototype.slice.call(document.querySelectorAll(".rp-float"));
-    if (!floats.length) return;
+    if (!bg && !floats.length) return;
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var ticking = false;
     function update() {
@@ -237,6 +237,8 @@ collections and Wisconsin Historical Society: <a href="https://www.wisconsinhist
       var vh = window.innerHeight;
       var sy = window.pageYOffset;
       var doch = Math.max(1, document.documentElement.scrollHeight - vh);
+      var progress = Math.min(1, Math.max(0, sy / doch));
+      if (bg) bg.style.backgroundPositionY = (reduce ? 0 : progress * 100).toFixed(2) + "%";
       for (var i = 0; i < floats.length; i++) {
         var f = floats[i];
         var anchor = parseFloat(f.getAttribute("data-anchor") || "0.5") * doch;

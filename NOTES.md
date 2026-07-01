@@ -29,8 +29,8 @@ structure and the local-authoring → build → deploy workflow.
       `82.197.82.96` (verified 2026-07-01). `A @` and `A www` both set.
 - [x] Cleanup: removed the leftover `*` wildcard A record (was pointing at
       Hover parking IP `216.40.34.41`). Stray subdomains now return NXDOMAIN.
-- [ ] Enable free SSL for cmdottie.com in hPanel (both names now resolve, so
-      Let's Encrypt should validate apex + www cleanly)
+- [x] SSL enabled — Lifetime SSL, status Active (installed 2026-07-01, never
+      expires). Site now serves over HTTPS.
 
 ### DNS reference (authoritative = Microsoft, NOT Hover)
 - Nameservers: `ns1-4.bdm.microsoftonline.com` → **all DNS edits go in the

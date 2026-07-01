@@ -490,6 +490,41 @@ main {
   font-style: italic;
 }
 
+/* Tables (research reports and any Markdown tables) */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95rem;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.prose th {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.prose tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--surface-2) 45%, transparent);
+}
+
+/* Long-form research pages: use the full column width so tables breathe */
+.research {
+  max-width: none;
+}
+
+.research h2 {
+  padding-top: 0.4em;
+  border-top: 1px solid var(--border);
+}
+
 /* ----- Footer ----- */
 .site-footer {
   border-top: 1px solid var(--border);

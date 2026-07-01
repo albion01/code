@@ -376,6 +376,30 @@ main {
   font-size: 1.2rem;
 }
 
+/* Whole-card link (home page hub) */
+.card-link {
+  display: block;
+  color: var(--text);
+}
+
+.card-link:hover {
+  text-decoration: none;
+}
+
+.card-link h3 {
+  color: var(--text);
+  transition: color 0.16s ease;
+}
+
+.card-link:hover h3 {
+  color: var(--accent);
+}
+
+.card-link p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
 .card-links {
   color: var(--muted);
   font-size: 0.95rem;

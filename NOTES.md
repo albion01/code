@@ -27,11 +27,17 @@ structure and the local-authoring → build → deploy workflow.
 - [x] Hostinger server IP: `82.197.82.96`
 - [x] DNS: both `www.cmdottie.com` and apex `cmdottie.com` resolve to
       `82.197.82.96` (verified 2026-07-01). `A @` and `A www` both set.
-- [ ] Optional cleanup: a `*` wildcard A record still points at the registrar
-      parking IP `216.40.34.41`. Harmless (specific records win) — delete it if
-      a clean zone is wanted so stray subdomains stop hitting the parking page.
+- [x] Cleanup: removed the leftover `*` wildcard A record (was pointing at
+      Hover parking IP `216.40.34.41`). Stray subdomains now return NXDOMAIN.
 - [ ] Enable free SSL for cmdottie.com in hPanel (both names now resolve, so
       Let's Encrypt should validate apex + www cleanly)
+
+### DNS reference (authoritative = Microsoft, NOT Hover)
+- Nameservers: `ns1-4.bdm.microsoftonline.com` → **all DNS edits go in the
+  Microsoft 365 admin center**; records set at Hover (the registrar) are ignored.
+- `A @`   → `82.197.82.96`
+- `A www` → `82.197.82.96`
+- Email (MX / SPF-TXT / autodiscover / DKIM / _dmarc): untouched, working.
 - [ ] Replace placeholder content with real name/bio/projects
 
 ## Next step: DNS for www.cmdottie.com

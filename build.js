@@ -74,6 +74,14 @@ if (fs.existsSync(assetsSrc)) {
   fs.cpSync(assetsSrc, path.join(DIST, "assets"), { recursive: true });
 }
 
+// ----- Copy raw passthrough files (server scripts, .htaccess, etc.) -----
+// Everything in public/ is copied verbatim into dist/, including dotfiles and
+// executable bits (e.g. the CGI counter and its .htaccess).
+const publicSrc = path.join(root, "public");
+if (fs.existsSync(publicSrc)) {
+  fs.cpSync(publicSrc, DIST, { recursive: true });
+}
+
 // ----- Build hand-written pages -----
 let pageCount = 0;
 for (const file of fs.readdirSync(PAGES)) {

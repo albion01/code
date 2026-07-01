@@ -29,9 +29,49 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="container footer-inner">
       <p>&copy; {{year}} Albion. Built by hand.</p>
+      <p class="counter">
+        <span class="counter-label">Visitors</span>
+        <span id="odometer" class="odometer" aria-label="visitor count" role="img">000000</span>
+      </p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var el = document.getElementById("odometer");
+      if (!el) return;
+
+      function paint(n) {
+        var s = String(n).replace(/\D/g, "");
+        while (s.length < 6) s = "0" + s;
+        el.textContent = "";
+        for (var i = 0; i < s.length; i++) {
+          var d = document.createElement("span");
+          d.className = "odo-digit";
+          d.textContent = s[i];
+          el.appendChild(d);
+        }
+      }
+
+      // Count once per browser session; just read the value after that.
+      var counted = sessionStorage.getItem("vc_counted");
+      var q = counted ? "?peek=1" : "";
+
+      fetch("/counter.php" + q, { cache: "no-store" })
+        .then(function (r) {
+          if (!r.ok) throw new Error("bad status");
+          return r.json();
+        })
+        .then(function (data) {
+          sessionStorage.setItem("vc_counted", "1");
+          paint(data.count);
+        })
+        .catch(function () {
+          /* leave the placeholder digits if the endpoint is unavailable */
+        });
+    })();
+  </script>
 </body>
 </html>

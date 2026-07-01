@@ -63,20 +63,28 @@ account's server hostname (`srv1718`, revealed by the deploy upload endpoint
 (Optional, not requested yet: apex `cmdottie.com` → A record to same IP + a
 redirect to www, if the bare domain should also resolve.)
 
-## Deploy (blocked on network allowlist)
+## Deploy (blocked on token scope)
 
 Site is fully static and **already builds** (`npm run build` → `dist/`, 3 pages
-+ 1 post). Deploy path is ready but the upload is blocked by egress policy:
++ 1 post). Two blockers hit, in order:
 
-- `hosting_deployStaticWebsite` uploads to `srv1718-files.hstgr.io`, which the
-  session's egress proxy **denies with 403** (host not on the Custom network
-  allowlist).
-- **Fix:** add `srv1718-files.hstgr.io` (or broaden to `*.hstgr.io`) to the
-  Custom network allowlist, then start a **fresh** web session and deploy:
+1. ~~Egress: `srv1718-files.hstgr.io` denied by the network allowlist (403).~~
+   **RESOLVED** — host added to the Custom allowlist; CONNECT now succeeds.
+2. **Hostinger file service returns 403** on the tus upload
+   (`https://srv1718-files.hstgr.io/.../api/tus/public_html/...`, HEAD → 403).
+   Consistent across retries with fresh upload tokens, so it's Hostinger-side,
+   not the proxy. Everything else (list/create website, free subdomain) works
+   with the current token, so the likely cause is **token scope**: the
+   `HOSTINGER_API_TOKEN` lacks file-manager / deployment permission.
+   - **Chosen fix:** regenerate `HOSTINGER_API_TOKEN` in hPanel with full /
+     file-manager scope, update the env-var config, then start a **fresh**
+     session (env vars only load at session start).
+
+Once the new token is live, deploy in one go:
   1. `npm run build`
   2. Zip the **contents** of `dist/` (so `index.html` is at the archive root).
   3. `hosting_deployStaticWebsite` with `domain: cmdottie.com` + the archive.
-- Then enable free SSL for cmdottie.com in hPanel (after DNS resolves).
+  4. Enable free SSL for cmdottie.com in hPanel (after DNS resolves).
 
 ## Note on the web session vs local CLI
 

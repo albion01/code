@@ -5,6 +5,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { marked } from "marked";
 import matter from "gray-matter";
@@ -18,6 +19,14 @@ const DIST = path.join(root, "dist");
 const layout = fs.readFileSync(path.join(SRC, "layout.html"), "utf8");
 const postTemplate = fs.readFileSync(path.join(SRC, "post.html"), "utf8");
 const YEAR = String(new Date().getFullYear());
+
+// Cache-busting version for the stylesheet: an 8-char hash of its contents, so
+// the URL changes only when the CSS changes, forcing browsers/CDNs to refetch.
+const CSS_VER = crypto
+  .createHash("md5")
+  .update(fs.readFileSync(path.join(SRC, "assets", "styles.css")))
+  .digest("hex")
+  .slice(0, 8);
 
 // Fill {{token}} placeholders. Unreplaced tokens are stripped at the end.
 function render(template, vars) {
@@ -34,6 +43,7 @@ function applyLayout(content, { title, description }) {
     description: description || "",
     content,
     year: YEAR,
+    cssver: CSS_VER,
   });
 }
 

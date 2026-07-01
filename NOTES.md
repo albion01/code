@@ -24,8 +24,10 @@ structure and the local-authoring → build → deploy workflow.
       (username `u151324086`, root `/home/u151324086/domains/cmdottie.com/public_html`)
 - [x] Deploy `dist/` to Hostinger — deployed 2026-07-01 via MCP
       `hosting_deployStaticWebsite` (upload + deploy returned success)
-- [ ] Fetch Hostinger server IP
-- [ ] Point `www.cmdottie.com` at Hostinger (DNS)
+- [x] Hostinger server IP: `82.197.82.96`
+- [x] Point `www.cmdottie.com` at Hostinger (DNS) — A record created,
+      `www.cmdottie.com` resolves to `82.197.82.96` (verified 2026-07-01).
+      Apex `cmdottie.com` intentionally has no A record (www-only).
 - [ ] Enable free SSL for cmdottie.com in hPanel
 - [ ] Replace placeholder content with real name/bio/projects
 

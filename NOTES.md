@@ -20,9 +20,13 @@ structure and the local-authoring → build → deploy workflow.
 - [x] Web environment fixed: `HOSTINGER_API_TOKEN` set as an env var, and
       `developers.hostinger.com` + `api.hostinger.com` added to Custom network
       allowlist. (Env vars only load at session start — needs a fresh session.)
+- [x] Website `cmdottie.com` exists on the Hostinger plan
+      (username `u151324086`, root `/home/u151324086/domains/cmdottie.com/public_html`)
+- [x] Deploy `dist/` to Hostinger — deployed 2026-07-01 via MCP
+      `hosting_deployStaticWebsite` (upload + deploy returned success)
 - [ ] Fetch Hostinger server IP
 - [ ] Point `www.cmdottie.com` at Hostinger (DNS)
-- [ ] Deploy `dist/` to Hostinger + enable SSL
+- [ ] Enable free SSL for cmdottie.com in hPanel
 - [ ] Replace placeholder content with real name/bio/projects
 
 ## Next step: DNS for www.cmdottie.com

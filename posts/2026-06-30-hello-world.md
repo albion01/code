@@ -1,7 +1,7 @@
 ---
 title: "Hello, world"
 date: 2026-06-30
-description: "The first post — how this site works and what's coming."
+description: "The first post: how this site works and what's coming."
 ---
 
 Welcome to the blog. This post was written locally in Markdown, converted to

@@ -137,7 +137,7 @@ for (const post of posts) {
   fs.writeFileSync(
     path.join(dir, "index.html"),
     applyLayout(article, {
-      title: `${post.title} — Albion`,
+      title: `${post.title} | Albion`,
       description: post.description,
     }),
   );
@@ -165,7 +165,7 @@ ${items || "      <li>No posts yet.</li>"}
 fs.writeFileSync(
   path.join(blogDir, "index.html"),
   applyLayout(blogIndexBody, {
-    title: "Blog — Albion",
+    title: "Blog | Albion",
     description: "Writing by Albion.",
   }),
 );

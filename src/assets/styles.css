@@ -1,0 +1,304 @@
+/* ----- Design tokens ----- */
+:root {
+  --bg: #ffffff;
+  --surface: #f7f7f8;
+  --text: #1b1b1f;
+  --muted: #5c5c66;
+  --border: #e4e4e8;
+  --accent: #3a5bd9;
+  --accent-contrast: #ffffff;
+  --max-width: 760px;
+  --radius: 12px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131316;
+    --surface: #1c1c21;
+    --text: #eaeaf0;
+    --muted: #a0a0ad;
+    --border: #2c2c34;
+    --accent: #8aa0ff;
+    --accent-contrast: #10101a;
+  }
+}
+
+/* ----- Base ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin: 0 0 0.4em;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+}
+
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* ----- Header / nav ----- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+}
+
+.brand {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--muted);
+}
+
+.nav-links a:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* ----- Layout sections ----- */
+main {
+  padding: 48px 20px 64px;
+}
+
+.section {
+  margin-bottom: 56px;
+}
+
+.hero {
+  padding: 24px 0 8px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.lead {
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* ----- Buttons ----- */
+.button {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.button:hover {
+  text-decoration: none;
+  filter: brightness(1.05);
+}
+
+.button-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* ----- Lists ----- */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ----- Cards ----- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card-links {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ----- Blog ----- */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-list li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-list .post-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: -0.4em;
+}
+
+.post-excerpt {
+  color: var(--muted);
+  margin: 6px 0 0;
+}
+
+.post-back {
+  font-size: 0.95rem;
+}
+
+/* ----- Prose (blog post body & about) ----- */
+.prose p,
+.prose ul,
+.prose ol {
+  margin: 1em 0;
+}
+
+.prose h2 {
+  margin-top: 1.6em;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.prose blockquote {
+  margin: 1.2em 0;
+  padding: 0.2em 1em;
+  border-left: 3px solid var(--accent);
+  color: var(--muted);
+}
+
+/* ----- Footer ----- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 24px 0;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 520px) {
+  body {
+    font-size: 17px;
+  }
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+  .nav-links {
+    gap: 14px;
+  }
+}

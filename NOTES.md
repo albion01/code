@@ -25,10 +25,13 @@ structure and the local-authoring → build → deploy workflow.
 - [x] Deploy `dist/` to Hostinger — deployed 2026-07-01 via MCP
       `hosting_deployStaticWebsite` (upload + deploy returned success)
 - [x] Hostinger server IP: `82.197.82.96`
-- [x] Point `www.cmdottie.com` at Hostinger (DNS) — A record created,
-      `www.cmdottie.com` resolves to `82.197.82.96` (verified 2026-07-01).
-      Apex `cmdottie.com` intentionally has no A record (www-only).
-- [ ] Enable free SSL for cmdottie.com in hPanel
+- [x] DNS: both `www.cmdottie.com` and apex `cmdottie.com` resolve to
+      `82.197.82.96` (verified 2026-07-01). `A @` and `A www` both set.
+- [ ] Optional cleanup: a `*` wildcard A record still points at the registrar
+      parking IP `216.40.34.41`. Harmless (specific records win) — delete it if
+      a clean zone is wanted so stray subdomains stop hitting the parking page.
+- [ ] Enable free SSL for cmdottie.com in hPanel (both names now resolve, so
+      Let's Encrypt should validate apex + www cleanly)
 - [ ] Replace placeholder content with real name/bio/projects
 
 ## Next step: DNS for www.cmdottie.com

@@ -1,6 +1,30 @@
 <!-- title: Józef Julian Erentz | Genealogy | Albion -->
 <!-- description: Research report on Joseph "Erenz" (Józef Julian Erentz, b. 1873), his first wife Anna Walta, and their Żyrardów family, including the surname trail and the open search for his parents. -->
-<section class="section prose research">
+<style>
+  /* Neutralize the global ambient glow on this page so the portrait shows through */
+  body::before{display:none !important;}
+  .rp-bg{position:fixed;inset:0;z-index:-3;background:#241a12 url("/images/Joseph%20Erenz.jpg") center 15%/cover no-repeat;filter:sepia(.35) contrast(1.02) brightness(.92);}
+  .rp-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 44%,transparent) 0%,color-mix(in srgb,var(--bg) 76%,transparent) 52%,color-mix(in srgb,var(--bg) 90%,transparent) 100%);}
+  .rp-hero{position:absolute;top:0;left:0;right:0;height:56vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;padding-bottom:2.5vh;text-align:center;pointer-events:none;}
+  .rp-hero-name{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,5vw,3.1rem);color:var(--text);text-shadow:0 2px 22px color-mix(in srgb,var(--bg) 60%,transparent);}
+  .rp-hero-sub{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+  .rp-floats{position:fixed;inset:0;z-index:-2;pointer-events:none;}
+  .rp-float{position:fixed;top:0;display:block;margin:0;width:clamp(148px,21vw,290px);background:#fbf7ef;padding:7px 7px 12px;border-radius:4px;box-shadow:0 22px 55px rgba(0,0,0,.5);opacity:0;transform:translate3d(0,-9999px,0);will-change:transform,opacity;}
+  .rp-float img{display:block;width:100%;height:auto;border-radius:2px;filter:sepia(.15) contrast(1.02);}
+  .rp-content{position:relative;z-index:1;margin-top:56vh;background:color-mix(in srgb,var(--bg) 91%,transparent);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);border:1px solid var(--border);border-radius:var(--radius);padding:30px clamp(18px,4vw,44px);box-shadow:var(--shadow-lift);}
+</style>
+<div class="rp-bg" aria-hidden="true"></div>
+<div class="rp-hero" aria-hidden="true">
+  <span class="rp-hero-name">Józef Julian Erentz</span>
+  <span class="rp-hero-sub">c. 1900</span>
+</div>
+<div class="rp-floats" aria-hidden="true">
+  <figure class="rp-float" data-anchor="0.16" data-speed="0.35" data-rot="-3" style="left:3vw;"><img src="/images/210-213.jpg" alt=""></figure>
+  <figure class="rp-float" data-anchor="0.40" data-speed="0.52" data-rot="2.5" style="right:3vw;"><img src="/assets/genealogy/petition.jpg" alt=""></figure>
+  <figure class="rp-float" data-anchor="0.63" data-speed="0.42" data-rot="-2" style="left:4vw;"><img src="/assets/genealogy/naturalization.jpg" alt=""></figure>
+  <figure class="rp-float" data-anchor="0.86" data-speed="0.55" data-rot="3" style="right:4vw;"><img src="/images/241762639_224c50e0-603a-4796-b29c-88164cd5425a.jpeg" alt=""></figure>
+</div>
+<section class="section prose research rp-content">
   <p class="post-back"><a href="/genealogy.html">&larr; All genealogy</a></p>
 <h1>Research Report: Józef Julian Erentz and His First Family</h1>
 <p><strong>Subject:</strong> Józef Julian Erentz (US &quot;Joseph Julius Erenz&quot;), Gramps ID <strong>I583643106</strong>
@@ -202,3 +226,35 @@ collections and Wisconsin Historical Society: <a href="https://www.wisconsinhist
 <p>A fuller free-source guide with priority order is saved in Gramps as Blog source <strong>S0068</strong>
 (&quot;Genealogy Research Guide - Key Documents for Any Person and Free Sources&quot;).</p>
 </section>
+<script>
+  (function () {
+    var floats = Array.prototype.slice.call(document.querySelectorAll(".rp-float"));
+    if (!floats.length) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight;
+      var sy = window.pageYOffset;
+      var doch = Math.max(1, document.documentElement.scrollHeight - vh);
+      for (var i = 0; i < floats.length; i++) {
+        var f = floats[i];
+        var anchor = parseFloat(f.getAttribute("data-anchor") || "0.5") * doch;
+        var speed = parseFloat(f.getAttribute("data-speed") || "0.3");
+        var rot = parseFloat(f.getAttribute("data-rot") || "0");
+        var dist = sy - anchor;
+        var h = f.offsetHeight || 260;
+        var y = vh * 0.5 - h * 0.5 - dist * (reduce ? 0 : speed);
+        var band = vh * 1.15;
+        var op = Math.max(0, 1 - Math.abs(dist) / band);
+        f.style.transform = "translate3d(0," + y.toFixed(1) + "px,0) rotate(" + rot + "deg)";
+        f.style.opacity = (op * op * 0.6).toFixed(3);
+      }
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    window.addEventListener("load", update);
+    update();
+  })();
+</script>
